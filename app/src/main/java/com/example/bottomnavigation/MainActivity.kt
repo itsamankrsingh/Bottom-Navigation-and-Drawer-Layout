@@ -27,13 +27,16 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigation.setupWithNavController(navController)
 
         //navigate up button
-        appBarConfiguration = AppBarConfiguration(navController.graph)
+        appBarConfiguration = AppBarConfiguration(navController.graph, binding.drawerLayout)
 
         //arrow button
-        NavigationUI.setupActionBarWithNavController(this, navController)
+        NavigationUI.setupActionBarWithNavController(this, navController,binding.drawerLayout)
+
+        //drawer navigation
+        NavigationUI.setupWithNavController(binding.navigationView,navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {
-       return NavigationUI.navigateUp(navController, appBarConfiguration)
+        return NavigationUI.navigateUp(navController, appBarConfiguration)
     }
 }
